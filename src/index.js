@@ -4,6 +4,7 @@ const app = express();
 
 const apiRoutes = require('./routes/index')
 const db = require('./models/index')
+const dotenv= require('dotenv');
 
 const {PORT} = require('./config/serverconfig')
 const setupAndStartServer = () =>{
@@ -19,7 +20,7 @@ const setupAndStartServer = () =>{
         console.log(`server started on port ${PORT}`)
 
         if(process.env.DB_SYNC){
-            db.Sequelize.sync({alter: true});
+            db.sequelize.sync({alter: true});
         }
     })
 }
